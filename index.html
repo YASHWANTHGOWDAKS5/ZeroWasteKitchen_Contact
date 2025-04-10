@@ -6,53 +6,177 @@
     <title>Feedback</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
+            body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
         }
+        
         .container {
-            background: white;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 40px 0;
             text-align: center;
         }
-        input, textarea, button {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-        button {
-            background-color: #28a745;
+        
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
             color: white;
             border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
             cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s;
         }
-        button:disabled {
-            background-color: #ccc;
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .secondary-btn {
+            background-color: #f5f5f5;
+            color: #333;
+            margin-left: 10px;
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Zero Waste Kitchen</h1>
+            <div class="tagline">Manage your pantry smartly, reduce food waste, and save money</div>
+        </div>
+    </header>
+    
     <div class="container">
-        <h1>Zero Waste Kitchen<h1>
-       <p>A VASA Creations Product.</p>
-        <h2>Send Your Feedback</h2>
-        <form id="feedback-form">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Feedback</button>
-        </form>
-        <p id="form-status"></p>
-        <button class="back-btn" onclick="window.history.back()">Go Back</button>
+        <div class="contact-form">
+            <h2>Send Your Feedback</h2>
+            <form id="feedback-form" action="/send-feedback" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn">Send Feedback</button>
+                    <a href="/" class="btn secondary-btn">Go Back</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Other Ways to Reach Us</h3>
+            <p>Email: support@zerowastekitchen.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
     </div>
+    
+    <footer>
+        <div class="container">
+            <div>Zero Waste Kitchen</div>
+            <div>A VASA Creations Product.</div>
+            <div class="footer-links">
+                <a href="/feedback">Send Your Feedback</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
 
     <script>
         (function() {
